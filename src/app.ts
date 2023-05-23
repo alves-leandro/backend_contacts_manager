@@ -6,6 +6,7 @@ import { clientRoutes } from "./routes/client.routes";
 import { contactRoutes } from "./routes/contact.routes";
 import { loginRoutes } from "./routes/login.routes";
 import { handleErrorMiddleware } from "./middlewares";
+import { forgotPasswordRoutes } from "./routes/forgotPassword.routes";
 
 
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/client", clientRoutes);
 app.use("/login", loginRoutes);
 app.use("/contact", contactRoutes);
+app.use("/forgotpassword", forgotPasswordRoutes);
 
 app.use(handleErrorMiddleware);
 

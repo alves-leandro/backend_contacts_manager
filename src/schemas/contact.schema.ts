@@ -6,14 +6,14 @@ const contactSchema = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string().email(),
-  secondEmail: z.string().email().nullish(),
+  // secondEmail: z.string().email().nullish(),
   phone: z.string().regex(phoneRegex),
-  secondPhone: z
-    .string()
-    .refine((value) => phoneRegex.test(value), {
-      message: "Telefone inválido",
-    })
-    .nullish(),
+  // secondPhone: z
+  //   .string()
+  //   .refine((value) => phoneRegex.test(value), {
+  //     message: "Telefone inválido",
+  //   })
+  //   .nullish(),
 });
 
 const contactSchemaRequest = contactSchema.omit({
