@@ -10,7 +10,7 @@ class Contact {
   @Column()
   name: string;
 
-  @Column()
+  @Column({unique: true})
   email: string;
 
   @Column({ nullable: true })
@@ -25,7 +25,7 @@ class Contact {
   @Column()
   registrationDate: Date;
 
-  @ManyToOne(() => Client)
+  @ManyToOne(() => Client, client => client.contacts, { onDelete:"CASCADE" })
   client: Client;
 }
 

@@ -36,7 +36,6 @@ const createClientService = async (
   });
 
   await clientRepository.save(client);
-  
 
   return clientSchemaResponse.parse(client);
 };

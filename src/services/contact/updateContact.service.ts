@@ -14,9 +14,13 @@ const updateContactService = async (data: TContactUpdateRequest, contactId: stri
         throw new AppError("Contact not found", 404)
     }
 
+    const secondData: any = null
+
     const newContactData = contactsRepository.create({
         ...oldContact,
-        ...data
+        ...data,
+        secondEmail: data.secondEmail ? data.secondEmail : oldContact.secondEmail,
+        secondPhone: data.secondPhone ? data.secondPhone : oldContact.secondPhone,
     })
 
     await contactsRepository.save(newContactData)

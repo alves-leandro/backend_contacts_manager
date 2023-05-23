@@ -22,8 +22,8 @@ class Client {
   @Column()
   registrationDate: Date;
 
-  @OneToMany(() => Contact, contact => contact.client, { cascade: true })
-    contact: Contact[]
+  @OneToMany(() => Contact, contact => contact.client)
+    contacts: Contact[]
 }
 
 export {Client}
