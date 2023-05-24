@@ -2,12 +2,16 @@ FROM node:14
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json ./
 
-RUN yarn install
+RUN yarn install --production=false
 
-COPY .env .
+COPY . .
 
-EXPOSE 3000
+RUN yarn build
 
-CMD [ "yarn", "start" ]
+EXPOSE 3001
+
+CMD [ "node", "dist/server.js" ] 
+
+
