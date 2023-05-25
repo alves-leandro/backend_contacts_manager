@@ -2,7 +2,7 @@ FROM node:14
 
 WORKDIR /app
 
-COPY package.json ./
+COPY package.json yarn.lock ./
 
 RUN yarn install --production=false
 
@@ -12,6 +12,8 @@ RUN yarn build
 
 EXPOSE 3001
 
-CMD [ "node", "dist/server.js" ] 
+# CMD [ "yarn", "start" ]
 
+CMD [ "yarn", "dev2" ]
 
+# CMD [ "node", "dist/server.js" ]

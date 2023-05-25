@@ -9,7 +9,8 @@
     "dev": "ts-node-dev --ignore-watch node_modules --cls --rs src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "dev2": "typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts && ts-node-dev --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
