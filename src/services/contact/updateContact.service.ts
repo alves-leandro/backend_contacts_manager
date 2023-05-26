@@ -21,6 +21,9 @@ const updateContactService = async (data: TContactUpdateRequest, contactId: stri
         ...data,
         secondEmail: data.secondEmail ? data.secondEmail : oldContact.secondEmail,
         secondPhone: data.secondPhone ? data.secondPhone : oldContact.secondPhone,
+        githubUser: data.githubUser ? data.githubUser : oldContact.githubUser,
+        linkedinUser: data.linkedinUser ? data.linkedinUser : oldContact.linkedinUser,
+        portifolioUrl: data.portifolioUrl ? data.portifolioUrl : oldContact.portifolioUrl,
     })
 
     await contactsRepository.save(newContactData)

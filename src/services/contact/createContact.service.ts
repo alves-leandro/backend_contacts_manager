@@ -43,7 +43,9 @@ const createContactService = async (
     client,
     secondEmail: data.secondEmail ? data.secondEmail : secondData,
     secondPhone: data.secondPhone ? data.secondPhone : secondData,
-
+    githubUser: data.githubUser ? data.githubUser : secondData,
+    linkedinUser: data.linkedinUser ? data.linkedinUser : secondData,
+    portifolioUrl: data.portifolioUrl ? data.portifolioUrl : secondData,
     registrationDate: newDate,
   });
 

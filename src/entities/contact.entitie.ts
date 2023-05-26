@@ -22,6 +22,15 @@ class Contact {
   @Column({ nullable: true })
   secondPhone: string;
 
+  @Column({ nullable: true })
+  githubUser: string;
+
+  @Column({ nullable: true })
+  linkedinUser: string;
+
+  @Column({ nullable: true })
+  portifolioUrl: string;
+
   @Column()
   registrationDate: Date;
 

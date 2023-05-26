@@ -7,6 +7,9 @@ const contactSchema = z.object({
   secondEmail: z.string().email().nullish(),
   phone: z.string(),
   secondPhone: z.string().nullish(),
+  githubUser: z.string().nullish(),
+  linkedinUser: z.string().nullish(),
+  portifolioUrl: z.string().nullish(),
 });
 
 const contactSchemaRequest = contactSchema.omit({
