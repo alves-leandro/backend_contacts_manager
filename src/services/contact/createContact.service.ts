@@ -26,14 +26,6 @@ const createContactService = async (
     throw new AppError("Client not found", 404);
   }
 
-  const existingContact = await contactsRepository.findOne({
-    where: { email: data.email, client },
-  });
-
-  if (existingContact) {
-    throw new AppError("Contact with the same email already exists", 400);
-  }
-
   const newDate = new Date();
 
   const secondData: any = null;
