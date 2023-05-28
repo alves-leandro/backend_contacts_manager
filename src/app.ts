@@ -5,10 +5,10 @@ import cors from "cors";
 import { clientRoutes } from "./routes/client.routes";
 import { contactRoutes } from "./routes/contact.routes";
 import { loginRoutes } from "./routes/login.routes";
-import { handleErrorMiddleware } from "./middlewares";
 import { forgotPasswordRoutes } from "./routes/forgotPassword.routes";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocs from "./swagger.json";
+import handleErrorMiddleware from "./middlewares/handleError.middleware";
 
 const app: Application = express();
 

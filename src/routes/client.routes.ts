@@ -1,7 +1,8 @@
 import { Router } from "express"
 import { createClientController, deleteClientController, listClientController, updateClientController } from "../controllers/client.controllers"
 import { clientSchemaRequest, clientSchemaUpdate } from "../schemas/client.schema"
-import { ensureDataIsValidMiddleware, ensureIsOwnerMiddleware, ensureauthMiddleware } from "../middlewares"
+import { ensureDataIsValidMiddleware } from "../middlewares/ensureDataIsValid.middleware"
+import { ensureauthMiddleware } from "../middlewares/ensureAuth.middleware"
 import { ensureIsOwnerMiddlewareClient } from "../middlewares/ensureIsOwnerClient.middleware"
 
 const clientRoutes = Router()

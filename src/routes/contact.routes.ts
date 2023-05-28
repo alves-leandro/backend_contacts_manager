@@ -1,8 +1,9 @@
 import { Router } from "express"
 import { createContactController, deleteContactController, listContactController, updateContactController } from "../controllers/contact.controllers"
-import { ensureDataIsValidMiddleware, ensureauthMiddleware } from "../middlewares"
 import { contactSchemaRequest, contactSchemaUpdate } from "../schemas/contact.schema"
+import { ensureauthMiddleware } from "../middlewares/ensureAuth.middleware"
 import { ensureIsOwnerMiddlewareContact } from "../middlewares/ensureIsOwnerContact.middleware"
+import { ensureDataIsValidMiddleware } from "../middlewares/ensureDataIsValid.middleware"
 
 const contactRoutes = Router()
 

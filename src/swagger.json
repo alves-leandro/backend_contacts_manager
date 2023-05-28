@@ -113,7 +113,23 @@
                   "type": "object",
                   "$ref": "#/components/schemas/Client"
                 }
-              }
+              },
+              "example": [
+                {
+                  "id": "92ae9870-202e-4e13-bb47-f02c2d900fcc",
+                  "name": "Client 1",
+                  "email": "client1@mail.com",
+                  "password": "$2a$10$rqEd8XRCkyGAlqd.BIwUDOYyo4moMLRl9Ae1yhTdE/kGwMQiX4e4y",
+                  "phone": "1234567890"
+                },
+                {
+                  "id": "bb41727c-ea88-4abc-848c-902e7f5c90a0",
+                  "name": "Client2",
+                  "email": "Client2@mail.com",
+                  "password": "$2a$10$sBT5WfC2cT7McGEP6MnANOnV5U0YVee0Va6HHAJkIfnzBfBIulY7G",
+                  "phone": "99999999999"
+                }
+              ]
             }
           }
         }
@@ -200,19 +216,19 @@
       "post": {
         "summary": "Cadastro de Contatos",
         "description": "Essa rota será responsável por cadastrar um novo Contato",
-        "tags": ["Contato"],
+        "tags": ["Contat"],
         "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Contato"
+                "$ref": "#/components/schemas/Contat"
               },
               "examples": {
-                "contato": {
+                "contat": {
                   "value": {
-                    "name": "Nome do Contato",
-                    "email": "exemplocontato@mail.com",
+                    "name": "Contact 1",
+                    "email": "contact1@mail.com",
                     "phone": "0000000000"
                   }
                 }
@@ -225,7 +241,7 @@
             "description": "Requisição Inválida"
           },
           "409": {
-            "description": "Contato já existe"
+            "description": "Contat already exists"
           },
           "201": {
             "description": "Criado",
@@ -233,7 +249,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Contato"
+                  "$ref": "#/components/schemas/Contat"
                 }
               }
             }
