@@ -2,12 +2,15 @@ FROM node:18
 
 WORKDIR /app
 
+COPY package*.json ./
+
 RUN yarn install --production=false
+
+# RUN yarn build
 
 COPY . .
 
-RUN yarn build
-
 EXPOSE 3001
 
-CMD [ "yarn", "dev2" ]
+CMD [ "node", "dist/server.js"]
+# CMD [ "yarn", "dev2" ]

@@ -10,21 +10,19 @@ const updateContactService = async (data: TContactUpdateRequest, contactId: stri
     const contactsRepository: Repository<Contact> = AppDataSource.getRepository(Contact)
     const oldContact: Contact | null = await contactsRepository.findOneBy({ id: contactId })
 
-    if (!oldContact) {
+    if (!oldContact || oldContact.id !== contactId) {
         throw new AppError("Contact not found", 404)
     }
 
-    const secondData: any = null
-
     const newContactData = contactsRepository.create({
-        ...oldContact,
+        ...(oldContact || {}),
         ...data,
-        secondEmail: data.secondEmail ? data.secondEmail : oldContact.secondEmail,
-        secondPhone: data.secondPhone ? data.secondPhone : oldContact.secondPhone,
-        githubUser: data.githubUser ? data.githubUser : oldContact.githubUser,
-        linkedinUser: data.linkedinUser ? data.linkedinUser : oldContact.linkedinUser,
-        portifolioUrl: data.portifolioUrl ? data.portifolioUrl : oldContact.portifolioUrl,
-    })
+        secondEmail: data.secondEmail ? data.secondEmail : (oldContact?.secondEmail || ''),
+        secondPhone: data.secondPhone ? data.secondPhone : (oldContact?.secondPhone || ''),
+        githubUser: data.githubUser ? data.githubUser : (oldContact?.githubUser || ''),
+        linkedinUser: data.linkedinUser ? data.linkedinUser : (oldContact?.linkedinUser || ''),
+        portifolioUrl: data.portifolioUrl ? data.portifolioUrl : (oldContact?.portifolioUrl || ''),
+    });
 
     await contactsRepository.save(newContactData)
 

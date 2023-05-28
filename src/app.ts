@@ -7,8 +7,8 @@ import { contactRoutes } from "./routes/contact.routes";
 import { loginRoutes } from "./routes/login.routes";
 import { handleErrorMiddleware } from "./middlewares";
 import { forgotPasswordRoutes } from "./routes/forgotPassword.routes";
-
-
+import swaggerUi from "swagger-ui-express";
+import swaggerDocs from "./swagger.json";
 
 const app: Application = express();
 
@@ -19,6 +19,7 @@ app.use("/client", clientRoutes);
 app.use("/login", loginRoutes);
 app.use("/contact", contactRoutes);
 app.use("/forgotpassword", forgotPasswordRoutes);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(handleErrorMiddleware);
 
