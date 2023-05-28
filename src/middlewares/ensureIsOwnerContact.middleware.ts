@@ -3,7 +3,7 @@ import { AppDataSource } from "../data-source";
 import { Contact } from "../entities/contact.entitie";
 
 const UUID_REGEX = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
-const ensureIsOwnerMiddleware = async (
+const ensureIsOwnerMiddlewareContact = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -43,4 +43,4 @@ const ensureIsOwnerMiddleware = async (
   return next();
 };
 
-export { ensureIsOwnerMiddleware };
+export { ensureIsOwnerMiddlewareContact };

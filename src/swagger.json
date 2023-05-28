@@ -15,12 +15,52 @@
     }
   ],
   "paths": {
+    "/login": {
+      "sumary": "Login do Cliente",
+      "description": "Será o responsável pelo login do cliente na aplicação",
+      "tags": ["Client"],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Login"
+            },
+            "examples": {
+              "cliente": {
+                "value": {
+                  "email": "exemplo@mail.com",
+                  "password": "1234"
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "400": {
+          "description": "Bad Request"
+        },
+        "403": {
+          "description": "Invalid credentials"
+        },
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        }
+      }
+    },
     "/client": {
       "post": {
         "summary": "Cadastro de Cliente",
         "description": "Essa rota será responsável por cadastrar um novo Cliente",
         "tags": ["Client"],
-        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -42,13 +82,13 @@
         },
         "responses": {
           "400": {
-            "description": "Requisição Inválida"
+            "description": "Bad Request"
           },
           "409": {
-            "description": "Cliente já existe"
+            "description": "Client already exists"
           },
           "201": {
-            "description": "Criado",
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -116,6 +156,12 @@
           "401": {
             "description": "invalid token"
           },
+          "403": {
+            "description": "You don`t have permissions"
+          },
+          "404": {
+            "description": "Client not found"
+          },
           "200": {
             "description": "OK",
             "content": {
@@ -133,9 +179,16 @@
         "summary": "Deletar Cliente",
         "description": "Essa rota será responsável por remover um Cliente",
         "tags": ["Client"],
+        "security": [{ "bearerAuth": [] }],
         "responses": {
           "401": {
             "description": "invalid token"
+          },
+          "403": {
+            "description": "You don`t have permissions"
+          },
+          "404": {
+            "description": "Client not found"
           },
           "204": {
             "description": "No Content"
@@ -244,8 +297,11 @@
           "401": {
             "description": "invalid token"
           },
+          "403": {
+            "description": "You don`t have permissions"
+          },
           "404": {
-            "description": "Contact not found"
+            "description": "Client not found"
           },
           "200": {
             "description": "OK",
@@ -268,6 +324,12 @@
         "responses": {
           "401": {
             "description": "invalid token"
+          },
+          "403": {
+            "description": "You don`t have permissions"
+          },
+          "404": {
+            "description": "Client not found"
           },
           "204": {
             "description": "No Content"
@@ -300,7 +362,7 @@
             "description": "OK"
           },
           "404": {
-            "description": "Cliente não encontrado"
+            "description": "Client not found"
           }
         }
       }
@@ -308,6 +370,17 @@
   },
   "components": {
     "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
       "Client": {
         "type": "object",
         "properties": {
