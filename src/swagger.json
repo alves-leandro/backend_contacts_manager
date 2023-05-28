@@ -12,6 +12,10 @@
     {
       "url": "http://localhost:3001/",
       "description": "API de testes"
+    },
+    {
+      "url": "https://api-contacts-manager.onrender.com/",
+      "description": "API de testes"
     }
   ],
   "paths": {
@@ -137,7 +141,7 @@
         }
       }
     },
-    "/client/{uuid}": {
+    "/client/{id}": {
       "patch": {
         "summary": "Alterar dados do Cliente",
         "description": "Essa rota será responsável por alterar os dados de um Cliente",
@@ -145,10 +149,14 @@
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
-            "name": "uuid",
+            "name": "client id",
             "in": "path",
             "description": "Cliente pelo UUID",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "requestBody": {
@@ -200,10 +208,14 @@
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
-            "name": "uuid",
+            "name": "client id",
             "in": "path",
             "description": "Cliente pelo UUID",
-            "required": true
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "responses": {
@@ -286,7 +298,7 @@
         }
       }
     },
-    "/contact/{uuid}": {
+    "/contact/{id}": {
       "patch": {
         "summary": "Alterar dados do Contato",
         "description": "Essa rota será responsável por alterar os dados de um Contato",
@@ -294,10 +306,14 @@
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
-            "name": "uuid",
+            "name": "client id",
             "in": "path",
-            "description": "Contado pelo UUID",
-            "required": true
+            "description": "Contact pelo UUID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "requestBody": {
@@ -349,10 +365,14 @@
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
-            "name": "uuid",
+            "name": "client id",
             "in": "path",
-            "description": "Contado pelo UUID",
-            "required": true
+            "description": "Cliente pelo UUID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "responses": {
