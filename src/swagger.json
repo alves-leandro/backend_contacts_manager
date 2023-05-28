@@ -10,46 +10,48 @@
   },
   "servers": [
     {
-      "url": "http://localhost/3000/",
+      "url": "http://localhost/3001/",
       "description": "API de testes"
     }
   ],
   "paths": {
     "/login": {
-      "sumary": "Login do Cliente",
-      "description": "Será o responsável pelo login do cliente na aplicação",
-      "tags": ["Client"],
-      "requestBody": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Login"
-            },
-            "examples": {
-              "cliente": {
-                "value": {
-                  "email": "exemplo@mail.com",
-                  "password": "1234"
+      "post": {
+        "sumary": "Login do Cliente",
+        "description": "Será o responsável pelo login do cliente na aplicação",
+        "tags": ["Client"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              },
+              "examples": {
+                "cliente": {
+                  "value": {
+                    "email": "exemplo@mail.com",
+                    "password": "1234"
+                  }
                 }
               }
             }
           }
-        }
-      },
-      "responses": {
-        "400": {
-          "description": "Bad Request"
         },
-        "403": {
-          "description": "Invalid credentials"
-        },
-        "200": {
-          "description": "OK",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "$ref": "#/components/schemas/Login"
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Invalid credentials"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Login"
+                }
               }
             }
           }
@@ -70,8 +72,8 @@
               "examples": {
                 "cliente": {
                   "value": {
-                    "name": "Exemplo de Nome do Cliente",
-                    "email": "exemplo@mail.com",
+                    "name": "Cliente1",
+                    "email": "client1@mail.com",
                     "phone": "0000000000",
                     "password": "1234"
                   }
@@ -124,7 +126,7 @@
                 },
                 {
                   "id": "bb41727c-ea88-4abc-848c-902e7f5c90a0",
-                  "name": "Client2",
+                  "name": "Client 2",
                   "email": "Client2@mail.com",
                   "password": "$2a$10$sBT5WfC2cT7McGEP6MnANOnV5U0YVee0Va6HHAJkIfnzBfBIulY7G",
                   "phone": "99999999999"
@@ -135,7 +137,7 @@
         }
       }
     },
-    "/client/{id}": {
+    "/client/{uuid}": {
       "patch": {
         "summary": "Alterar dados do Cliente",
         "description": "Essa rota será responsável por alterar os dados de um Cliente",
@@ -143,9 +145,9 @@
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
-            "description": "Cliente pelo ID",
+            "description": "Cliente pelo UUID",
             "required": true
           }
         ],
@@ -158,8 +160,8 @@
               "examples": {
                 "cliente": {
                   "value": {
-                    "name": "Novo Exemplo de Nome do Cliente",
-                    "email": "novoeexemplo@mail.com",
+                    "name": "Cliente 1",
+                    "email": "cliente1@mail.com",
                     "phone": "333333333",
                     "password": "1234"
                   }
@@ -196,6 +198,14 @@
         "description": "Essa rota será responsável por remover um Cliente",
         "tags": ["Client"],
         "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "Cliente pelo UUID",
+            "required": true
+          }
+        ],
         "responses": {
           "401": {
             "description": "invalid token"
@@ -216,13 +226,13 @@
       "post": {
         "summary": "Cadastro de Contatos",
         "description": "Essa rota será responsável por cadastrar um novo Contato",
-        "tags": ["Contat"],
+        "tags": ["Contact"],
         "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Contat"
+                "$ref": "#/components/schemas/Contact"
               },
               "examples": {
                 "contat": {
@@ -249,7 +259,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Contat"
+                  "$ref": "#/components/schemas/Contact"
                 }
               }
             }
@@ -276,7 +286,7 @@
         }
       }
     },
-    "/contact/{id}": {
+    "/contact/{uuid}": {
       "patch": {
         "summary": "Alterar dados do Contato",
         "description": "Essa rota será responsável por alterar os dados de um Contato",
@@ -284,9 +294,9 @@
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
-            "name": "id",
+            "name": "uuid",
             "in": "path",
-            "description": "Contado pelo ID",
+            "description": "Contado pelo UUID",
             "required": true
           }
         ],
@@ -299,8 +309,8 @@
               "examples": {
                 "cliente": {
                   "value": {
-                    "name": "Novo Exemplo de Nome do Contato",
-                    "email": "novoeexemplocontato@mail.com",
+                    "name": "Contact 1",
+                    "email": "contact1@mail.com",
                     "phone": "333333333",
                     "password": "1234"
                   }
@@ -337,6 +347,14 @@
         "description": "Essa rota será responsável por remover um Contato",
         "tags": ["Contact"],
         "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "Contado pelo UUID",
+            "required": true
+          }
+        ],
         "responses": {
           "401": {
             "description": "invalid token"
@@ -357,7 +375,7 @@
       "post": {
         "summary": "Recuperar Senha",
         "description": "Essa rota será responsável por recuperar a senha do cliente",
-        "tags": ["Cliente"],
+        "tags": ["Client"],
         "requestBody": {
           "content": {
             "application/json": {

@@ -4,7 +4,7 @@ const contactSchema = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string().email(),
-  secondEmail: z.string().email().nullish(),
+  secondEmail: z.string().nullish(),
   phone: z.string(),
   secondPhone: z.string().nullish(),
   githubUser: z.string().nullish(),
