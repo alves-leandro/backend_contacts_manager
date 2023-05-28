@@ -248,13 +248,14 @@
         },
         "responses": {
           "400": {
-            "description": "Requisição Inválida"
+            "description": "Bad Request"
+
           },
           "409": {
             "description": "Contat already exists"
           },
           "201": {
-            "description": "Criado",
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
