@@ -40,6 +40,9 @@ code .
 
 5.5 - nao esqueça do DB
 
-6 - rode a aplicação localmente
+6 - Execute as migrações
+yarn typeorm migration:run -d src/data-source.ts
+
+7 - rode a aplicação localmente
 
 yarn dev
