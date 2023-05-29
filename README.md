@@ -16,3 +16,30 @@ https://api-contacts-manager.onrender.com/api-docs/
 O cliente (usuário) poderá cadastrar seus contatos e adicionar a eles informações relevantes como Linkedin, portifólio e Github deixando a aplicação mais dinâmica.
 
 CRUD completo tanto para "clientes" quando "Contatos"
+
+
+Para inicializar a aplicação em sua máquina siga os seguintes passos:
+
+1 - Abra seu terminal e crie uma pasta para clonar o repositório
+
+mkdir NOMEDAPASTA && cd NOMEDAPASTA
+
+2 - Faça o clone do repositório
+
+git clone CAMINHODOREPOSITORIO
+
+3 - Instale as dependências
+
+yarn 
+
+4 - Abra o VScode
+
+code .
+
+5 - Crie arquivo .env sequindo a estrutura do .env.example
+
+5.5 - nao esqueça do DB
+
+6 - rode a aplicação localmente
+
+yarn dev
