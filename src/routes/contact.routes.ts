@@ -9,7 +9,7 @@ const contactRoutes = Router()
 
 contactRoutes.use(ensureauthMiddleware)
 
-contactRoutes.get("", ensureIsOwnerMiddlewareContact, listContactController)
+contactRoutes.get("", listContactController)
 contactRoutes.post("", ensureDataIsValidMiddleware(contactSchemaRequest), createContactController)
 contactRoutes.patch("/:id", ensureIsOwnerMiddlewareContact, ensureDataIsValidMiddleware(contactSchemaUpdate), updateContactController)
 contactRoutes.delete("/:id", ensureIsOwnerMiddlewareContact, deleteContactController)
